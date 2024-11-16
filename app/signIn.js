@@ -8,7 +8,7 @@ import Loading from '../components/Loading';
 
 export default function signIn() {
   const router = useRouter();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const emailRef = useRef("");
   const passwordRef = useRef("");
@@ -37,7 +37,7 @@ export default function signIn() {
                 onChange={value => emailRef.current = value}
                 style={{fontSize: hp(2)}}
                 className="font-semibold text-neutral-800"
-                placeholder='Email'
+                placeholder='@Email Address'
                 placeholderTextColor={'gray'}
                 />
             </View>
@@ -59,8 +59,8 @@ export default function signIn() {
 
 
             {/* Submit Button */}
-            <View className="flex-1">
-              <View>
+            <View>
+              <View className="pb-4">
                 {
                   loading? (
                     <View className="flex-1 items-center">
@@ -78,7 +78,7 @@ export default function signIn() {
 
               {/* Sign up view */}
               <View className="flex-row justify-center">
-                <Text style={{fontSize: hp(1.8)}} className="font-medium text-neutral-600">Dont Have an Account?</Text>
+                <Text style={{fontSize: hp(1.8)}} className="font-medium text-neutral-600">Dont Have an Account? </Text>
                 <Pressable onPress={() => router.replace('signUp')}>
                   <Text style={{fontSize: hp(1.8)}} className="font-semibold  text-blue-500">Sign Up</Text>
                 </Pressable>

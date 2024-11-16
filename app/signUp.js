@@ -5,6 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import { Feather, Octicons, AntDesign } from '@expo/vector-icons'
 import { router, useRouter } from 'expo-router';
 import Loading from '../components/Loading';
+import CustomKeyBoardView from '../components/CustomKeyBoardView';
 
 export default function signUp() {
   const router = useRouter();
@@ -23,7 +24,7 @@ export default function signUp() {
   }
   
   return (
-    <View className="flex-1 pt-3">
+    <CustomKeyBoardView>
       <StatusBar style="dark" />
       <View className="flex-1 gap-2" style={{padding: hp(4)}}>
         <View className="items-center pb-5">
@@ -59,7 +60,7 @@ export default function signUp() {
               <TextInput 
                 onChange={value => passwordRef.current = value}
                 style={{fontSize: hp(2)}}
-                className="flex-1 font-semibold text-neutral-800 flex-1"
+                className="font-semibold text-neutral-800 flex-1"
                 placeholder='Password'
                 placeholderTextColor={'gray'}
                 secureTextEntry
@@ -71,7 +72,7 @@ export default function signUp() {
                 onChange={value => profileRef.current = value}
                 style={{fontSize: hp(2)}}
                 className="font-semibold text-neutral-800 flex-1"
-                placeholder='profile'
+                placeholder='Profile Image'
                 placeholderTextColor={'gray'}
               />
             </View>
@@ -108,6 +109,6 @@ export default function signUp() {
           </View>
         </View>
       </View>
-    </View>
+    </CustomKeyBoardView>
   )
 }

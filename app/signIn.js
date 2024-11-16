@@ -1,12 +1,14 @@
 import { View, Text, Image, TextInput, TouchableOpacity, Pressable, Alert } from 'react-native'
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { StatusBar } from 'expo-status-bar';
 import { Octicons } from '@expo/vector-icons'
 import { router, useRouter } from 'expo-router';
+import Loading from '../components/Loading';
 
 export default function signIn() {
   const router = useRouter();
+  const [loading, setLoading] = useState(true);
 
   const emailRef = useRef("");
   const passwordRef = useRef("");
@@ -55,18 +57,36 @@ export default function signIn() {
               <Text className="text-neutral-500 font-light text-right">Forgot Password?</Text>
             </View>
 
-            {/* Submit Button */}
-            <TouchableOpacity onPress={handleLogin} className="bg-blue-500 p-4 rounded-xl">
-              <Text style={{fontSize: hp(2.7)}}className="text-center color-white">Sign In</Text>
-            </TouchableOpacity>
 
-            {/* Sign up view */}
-            <View className="flex-row justify-center">
-              <Text style={{fontSize: hp(1.8)}} className="font-medium text-neutral-600">Dont Have an Account?</Text>
-              <Pressable onPress={() => router.replace('signUp')}>
-                <Text style={{fontSize: hp(1.8)}} className="font-semibold  text-blue-500">Sign Up</Text>
-              </Pressable>
+            {/* Submit Button */}
+            <View className="flex-1">
+              <View>
+                {
+                  loading? (
+                    <View className="flex-1 items-center">
+                      <Loading size={hp(8)}/>
+                    </View>
+                  ) : (
+                    <TouchableOpacity onPress={handleLogin} className="bg-blue-500 p-4 rounded-xl">
+                      <Text style={{fontSize: hp(2.7)}}className="text-center color-white">Sign In</Text>
+                    </TouchableOpacity>
+
+                  )
+                }
+              </View>
+
+
+              {/* Sign up view */}
+              <View className="flex-row justify-center">
+                <Text style={{fontSize: hp(1.8)}} className="font-medium text-neutral-600">Dont Have an Account?</Text>
+                <Pressable onPress={() => router.replace('signUp')}>
+                  <Text style={{fontSize: hp(1.8)}} className="font-semibold  text-blue-500">Sign Up</Text>
+                </Pressable>
+              </View>
+
             </View>
+
+
           </View>
         </View>
       </View>

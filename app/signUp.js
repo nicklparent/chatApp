@@ -2,7 +2,7 @@ import { View, Text, Image, TextInput, TouchableOpacity, Pressable, Alert } from
 import React, { useRef, useState } from 'react'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { StatusBar } from 'expo-status-bar';
-import { Octicons } from '@expo/vector-icons'
+import { Feather, Octicons, AntDesign } from '@expo/vector-icons'
 import { router, useRouter } from 'expo-router';
 import Loading from '../components/Loading';
 
@@ -35,11 +35,11 @@ export default function signUp() {
 
           <View className="gap-3">
             <View style={{height: hp(8)}} className=" flex-row gap-4 px-4 bg-neutral-300 items-center rounded-xl">
-              <Octicons name="mail" size={hp(2.7)} color="gray" />
+              <Feather name="user" size={hp(2.7)} color="gray" />
               <TextInput 
                 onChange={value => usernameRef.current = value}
                 style={{fontSize: hp(2)}}
-                className="font-semibold text-neutral-800"
+                className="font-semibold text-neutral-800 flex-1"
                 placeholder='Username'
                 placeholderTextColor={'gray'}
                 />
@@ -49,7 +49,7 @@ export default function signUp() {
               <TextInput 
                 onChange={value => emailRef.current = value}
                 style={{fontSize: hp(2)}}
-                className="font-semibold text-neutral-800"
+                className="font-semibold text-neutral-800 flex-1"
                 placeholder='@Email Address'
                 placeholderTextColor={'gray'}
               />
@@ -59,18 +59,18 @@ export default function signUp() {
               <TextInput 
                 onChange={value => passwordRef.current = value}
                 style={{fontSize: hp(2)}}
-                className="flex-1 font-semibold text-neutral-800"
+                className="flex-1 font-semibold text-neutral-800 flex-1"
                 placeholder='Password'
                 placeholderTextColor={'gray'}
                 secureTextEntry
                 />
             </View>
             <View style={{height: hp(8)}} className=" flex-row gap-4 px-4 bg-neutral-300 items-center rounded-xl">
-              <Octicons name="mail" size={hp(2.7)} color="gray" />
+              <Feather name="image" size={hp(2.7)} color="gray" />
               <TextInput 
                 onChange={value => profileRef.current = value}
                 style={{fontSize: hp(2)}}
-                className="font-semibold text-neutral-800"
+                className="font-semibold text-neutral-800 flex-1"
                 placeholder='profile'
                 placeholderTextColor={'gray'}
               />

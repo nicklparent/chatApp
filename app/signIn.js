@@ -1,5 +1,5 @@
-import { View, Text, Image, TextInput, TouchableOpacity, Pressable } from 'react-native'
-import React from 'react'
+import { View, Text, Image, TextInput, TouchableOpacity, Pressable, Alert } from 'react-native'
+import React, { useRef } from 'react'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { StatusBar } from 'expo-status-bar';
 import { Octicons } from '@expo/vector-icons'
@@ -7,6 +7,16 @@ import { router, useRouter } from 'expo-router';
 
 export default function signIn() {
   const router = useRouter();
+
+  const emailRef = useRef("");
+  const passwordRef = useRef("");
+
+  const handleLogin = async () => {
+    if (!emailRef.current || !passwordRef.current){
+      Alert.alert('Sign In', 'Please Fill all the fields.');
+      return;
+    }
+  }
   return (
     <View className="flex-1 pt-3">
       <StatusBar style="dark" />
@@ -22,6 +32,7 @@ export default function signIn() {
             <View style={{height: hp(8)}} className=" flex-row gap-4 px-4 bg-neutral-300 items-center rounded-xl">
               <Octicons name="mail" size={hp(2.7)} color="gray" />
               <TextInput 
+                onChange={value => emailRef.current = value}
                 style={{fontSize: hp(2)}}
                 className="font-semibold text-neutral-800"
                 placeholder='Email'
@@ -33,17 +44,19 @@ export default function signIn() {
               <View style={{height: hp(8)}} className=" flex-row gap-4 px-4 bg-neutral-300 items-center rounded-xl">
                 <Octicons name="key" size={hp(2.7)} color="gray" />
                 <TextInput 
+                  onChange={value => passwordRef.current = value}
                   style={{fontSize: hp(2)}}
                   className="flex-1 font-semibold text-neutral-800"
                   placeholder='Password'
                   placeholderTextColor={'gray'}
+                  secureTextEntry
                   />
               </View>
               <Text className="text-neutral-500 font-light text-right">Forgot Password?</Text>
             </View>
 
             {/* Submit Button */}
-            <TouchableOpacity className="bg-blue-500 p-4 rounded-xl">
+            <TouchableOpacity onPress={handleLogin} className="bg-blue-500 p-4 rounded-xl">
               <Text style={{fontSize: hp(2.7)}}className="text-center color-white">Sign In</Text>
             </TouchableOpacity>
 

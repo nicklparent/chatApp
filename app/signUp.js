@@ -102,10 +102,7 @@ export default function signUp() {
                   <Text style={{fontSize: hp(1.8)}} className="font-semibold  text-blue-500">Sign In</Text>
                 </Pressable>
               </View>
-
             </View>
-
-
           </View>
         </View>
       </View>

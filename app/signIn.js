@@ -5,6 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import { Octicons } from '@expo/vector-icons'
 import { router, useRouter } from 'expo-router';
 import Loading from '../components/Loading';
+import CustomKeyBoardView from '../components/CustomKeyBoardView';
 
 export default function signIn() {
   const router = useRouter();
@@ -20,7 +21,7 @@ export default function signIn() {
     }
   }
   return (
-    <View className="flex-1 pt-3">
+    <CustomKeyBoardView>
       <StatusBar style="dark" />
       <View className="flex-1 gap-2" style={{padding: hp(4)}}>
         <View className="items-center pb-5">
@@ -36,7 +37,7 @@ export default function signIn() {
               <TextInput 
                 onChange={value => emailRef.current = value}
                 style={{fontSize: hp(2)}}
-                className="font-semibold text-neutral-800"
+                className="font-semibold text-neutral-800 flex-1"
                 placeholder='@Email Address'
                 placeholderTextColor={'gray'}
                 />
@@ -90,6 +91,6 @@ export default function signIn() {
           </View>
         </View>
       </View>
-    </View>
+    </CustomKeyBoardView>
   )
 }
